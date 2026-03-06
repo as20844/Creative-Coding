@@ -19,14 +19,20 @@ function setup() {
 
 function draw() {
     if (mouseIsPressed) {
-        background("red");
         mouseholdtime++;
+
+        if (mouseholdtime > 180) {
+            background(random(255), random(255), random(255));
+        } else {
+            background("red");
+        }
+
     } else {
         background(0);
-        mouseholdtime = 0
-
+        mouseholdtime = 0;
     }
-    drawCreature()
+
+    drawCreature();
 }
 
 function drawCreature() {
@@ -83,18 +89,19 @@ function drawCreature() {
         curveVertex(x, y);
     }
     endShape(CLOSE);
-
+    let eyeMove = sin(frameCount * 0.1) * 3;
     fill(255);
     noStroke();
-    ellipse(width / 2 - 20, height / 2 - 10, 15, 15);
-    ellipse(width / 2 + 20, height / 2 - 10, 15, 15);
+    ellipse(width / 2 - 20 + eyeMove, height / 2 - 10, 15, 15);
+    ellipse(width / 2 + 20 + eyeMove, height / 2 - 10, 15, 15);
 
 
     stroke(200);
     strokeWeight(4);
-
     for (let i = 50; i < width; i += 40) {
+        if (mouseholdtime > 180) continue;
         line(i, 0, i, height);
+
     }
 
     line(0, 20, width, 20);
