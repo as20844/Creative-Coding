@@ -11,6 +11,7 @@ let size = 10;
 let n = 10;
 let spread = 0
 let mouseholdtime = 0
+let exploded = false
 
 function setup() {
     let canvas = createCanvas(800, 500);
@@ -20,6 +21,9 @@ function setup() {
 function draw() {
     if (mouseIsPressed) {
         mouseholdtime++;
+        if (mouseholdtime > 1200) {
+            exploded = true
+        }
 
         if (mouseholdtime > 180) {
             background(random(255), random(255), random(255));
@@ -36,6 +40,7 @@ function draw() {
 }
 
 function drawCreature() {
+    if (exploded) return;
     if (mouseIsPressed) {
         size += 0.2;
     } else {
