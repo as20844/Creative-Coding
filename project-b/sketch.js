@@ -12,6 +12,8 @@ let openTime = 0;
 let scanX = 0;
 let soundPlayed = false;
 
+let password = null;
+
 function preload() {
   qilinImg = loadImage("IMG_5390.JPG");
   familyImg = loadImage("IMG_5391.JPG");
@@ -30,10 +32,22 @@ function setup() {
   createCanvas(700, 500);
   box = new Box(250, 180, 200, 120);
   textAlign(CENTER, CENTER);
+  if (password == null) {
+    password = prompt("Your a scientist in the future, but in order to have access to the box, you need to type in a net id. Enter the persons net id to continue.");
+  } else {
+    console.log("user entered", password);
+  }
+
 }
 
 function draw() {
   background(40, 45, 60);
+
+  textSize(14);
+  fill(255);
+  text("You are a scientist from the future trying to decipher these items, open the box first to scan the items.", width / 2 - 250, 400, 500);
+
+
 
   fill(255);
   textSize(28);
@@ -77,7 +91,7 @@ function draw() {
       fill(255, 0, 0);
       textSize(22);
       text(
-        "WARNING: Contents cannot be verified, could be dangerous",
+        "WARNING: Contents cannot be identified, manual investigation required",
         width / 2,
         100
       );
