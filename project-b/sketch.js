@@ -45,7 +45,7 @@ function draw() {
 
   textSize(14);
   fill(255);
-  text("You are a scientist from the future trying to decipher these items, open the box first to scan the items.", width / 2 - 250, 400, 500);
+  text("You are a scientist from the future trying to decipher these items, open the box first to scan the items.", width / 2 - 250, 450, 500);
 
 
 
@@ -101,8 +101,30 @@ function draw() {
     image(familyImg, 210, 290, 130, 100);
     image(messageImg, 360, 290, 130, 100);
     image(brainrotImg, 510, 290, 130, 100);
+
+    if (millis() - openTime > 5000) {
+      fill(0)
+      textSize(12);
+
+      if (mouseX > 60 && mouseX < 190 && mouseY > 290 && mouseY < 390) {
+        text("Looks to a be purple duck", width / 2, 260);
+      }
+
+      if (mouseX > 210 && mouseX < 340 && mouseY > 290 && mouseY < 390) {
+        text("A strange mythical creature", width / 2, 260);
+      }
+
+      if (mouseX > 360 && mouseX < 490 && mouseY > 290 && mouseY < 390) {
+        text("Looks like a family", width / 2, 260);
+      }
+
+      if (mouseX > 510 && mouseX < 640 && mouseY > 290 && mouseY < 390) {
+        text("A message to the future", width / 2, 260);
+      }
+    }
   }
 }
+
 
 function mousePressed() {
   let wasClosed = !box.open;
